@@ -3,30 +3,29 @@
  */
 
 const BACKGROUND = '.';
-const PLAYER_CHAR = 'X';
+const PLAYER = 'X';
 
-export function drawCanvas(gameState) {
-    const width = gameState.canvasWidth;
-    const height = gameState.canvasHeight;
-    let canvas = '';
-
-    for (let row = 0; row < height; row++) {
-        for (let column = 0; column < width; column++) {
-            canvas += gameState.playerPos.x === row && gameState.playerPos.y === column ? PLAYER_CHAR : BACKGROUND;
-        }
-        canvas += '\n';
+export function createRenderer(out, options = {}) {
+  return function render(gameState) {
+    const { canvasWidth: w, canvasHeight: h, playerPos: { x, y } } = gameState;
+    if (w === undefined || h === undefined) {
+      throw new Error('canvasWidth and canvasHeight are required');
     }
 
-    return canvas;
-}
+    let result = '';
 
-let renderCount = 0;
+    // y-axis is inverted because its painted top-to-bottom
+    for (let row = h - 1; row >= 0; row--) {
+      for (let col = 0; col < w; col++) {
+        const isPlayer = (row === y && col === x);
+        result += isPlayer ? PLAYER : BACKGROUND;
+      }
+      result += '\n';
+    }
 
-export function render(gameState) {
-  // Clear terminal and print current state
-  process.stdout.write('\x1Bc');
-  process.stdout.write(drawCanvas(gameState));
-  console.log(`Current State: ${gameState.playerPos.x}, ${gameState.playerPos.y}. Render count: ${renderCount}`);
-  gameState.needsRender = false;
-  renderCount++;
+    if (!options.test) {
+      out.write('\x1Bc');
+    }
+    out.write(result);
+  };
 }

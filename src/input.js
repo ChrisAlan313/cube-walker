@@ -1,31 +1,28 @@
-import readline from 'readline'
+import readline from 'readline';
 
-/**
- * low-level key event binding and semantic event dispatching
- */
+const keyMap = {
+  up:    'UP',
+  down:  'DOWN',
+  left:  'LEFT',
+  right: 'RIGHT',
+  w: 'UP',
+  s: 'DOWN',
+  a: 'LEFT',
+  d: 'RIGHT',
+  space: 'TOGGLE',
+};
 
-export const handleInput = (gameState) => {
+export function createInputHandler(onCommand) {
   readline.emitKeypressEvents(process.stdin);
   process.stdin.setRawMode(true);
   process.stdin.resume();
 
   process.stdin.on('keypress', (_, key) => {
-    if (key.name === 'space') {
-      gameState.toggleState();
-    } else if (key.name === 'c' && key.ctrl) {
+    if (key.ctrl && key.name === 'c') {
       process.exit();
-    } else if (key.name === 'left') {
-      gameState.moveLeft();
-      gameState.toggleState();
-    } else if (key.name === 'right') {
-      gameState.moveRight();
-      gameState.toggleState();
-    } else if (key.name === 'up') {
-      gameState.moveUp();
-      gameState.toggleState();
-    } else if (key.name === 'down') {
-      gameState.moveDown();
-      gameState.toggleState();
     }
+
+    const command = keyMap[key.name];
+    if (command) onCommand(command);
   });
 }

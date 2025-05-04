@@ -1,11 +1,11 @@
-import { main } from '../src/main.js';
-import { program } from 'commander';
+import { createInputHandler } from '../src/input.js';
+import { createRenderer } from '../src/ui.js';
+import { GameEngine } from '../src/engine.js';
+import GameState from '../src/state.js';
 
-program
-  .option('-w, --width <number>', 'Width of the canvas', 8)
-  .option('-h, --height <number>', 'Height of the canvas', 8)
-  .parse(process.argv);
+const gameState = new GameState({ playerPos: { x: 0, y: 0 }, gameWidth: 8, gameHeight: 8 });
+const render = createRenderer(process.stdout);
+const engine = new GameEngine(gameState, render);
 
-const { width, height } = program;
-
-main({ width, height });
+createInputHandler(engine.handleInput.bind(engine));
+engine.start();
