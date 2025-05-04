@@ -1,17 +1,18 @@
 import { drawCanvas } from './ui';
+import GameState from './gameState';
 
 describe('drawCanvas', () => {
   it('should draw a canvas with the player in the start position', () => {
-    const playerPos = {x: 0, y: 0};
-    const canvas = drawCanvas(playerPos);
-    expect(canvas).toBe(`xooooooo
-oooooooo
-oooooooo
-oooooooo
-oooooooo
-oooooooo
-oooooooo
-oooooooo
+    const gameState = new GameState({playerPos: {x: 0, y: 0}, canvasWidth: 8, canvasHeight: 8});
+    const canvas = drawCanvas(gameState);
+    expect(canvas).toBe(`X.......
+........
+........
+........
+........
+........
+........
+........
 `);
   });
 });

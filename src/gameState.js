@@ -1,23 +1,23 @@
 class GameState {
-  constructor({playerPos = {x: 0, y: 0}, gameWidth = 8, gameHeight = 8}) {
+  constructor({playerPos = {x: 0, y: 0}, canvasWidth = 8, canvasHeight = 8}) {
     this.playerPos = playerPos;
-    this.gameWidth = gameWidth;
-    this.gameHeight = gameHeight;
+    this.canvasWidth = canvasWidth;
+    this.canvasHeight = canvasHeight;
     this.needsRender = true;
   }
 
   wrapLocation() {
     if (this.playerPos.x < 0) {
-        this.playerPos.x = this.playerPos.x + this.gameWidth;
+        this.playerPos.x = this.playerPos.x + this.canvasWidth;
     }
-    if (this.playerPos.x >= this.gameWidth) {
-        this.playerPos.x = this.playerPos.x - this.gameWidth;
+    if (this.playerPos.x >= this.canvasWidth) {
+        this.playerPos.x = this.playerPos.x - this.canvasWidth;
     }
     if (this.playerPos.y < 0) {
-        this.playerPos.y = this.playerPos.y + this.gameHeight;
+        this.playerPos.y = this.playerPos.y + this.canvasHeight;
     }
-    if (this.playerPos.y >= this.gameHeight) {
-        this.playerPos.y = this.playerPos.y - this.gameHeight;
+    if (this.playerPos.y >= this.canvasHeight) {
+        this.playerPos.y = this.playerPos.y - this.canvasHeight;
     }
   };
 
