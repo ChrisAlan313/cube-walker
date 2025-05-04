@@ -1,10 +1,20 @@
 // figure out why we need to import this
 import { jest } from '@jest/globals';
-import { createRenderer } from './ui.js';
+import { createRenderer } from './index.js';
+
+class MockOut {
+  constructor() {
+    this.output = '';
+  }
+
+  write(str) {
+    this.output += str;
+  }
+}
 
 describe('UI Renderer', () => {
   it('draws correct output to stream', () => {
-    const output = { write: jest.fn() };
+    const output = new MockOut();
     const render = createRenderer(output, { test: true });
 
     const mockState = {
@@ -15,7 +25,7 @@ describe('UI Renderer', () => {
 
     render(mockState);
 
-    const fullOutput = output.write.mock.calls.map(call => call[0]).join('');
-    expect(fullOutput).toContain('.X.\n...\n');
+    // const fullOutput = output.write.mock.calls.map(call => call[0]).join('');
+    expect(output.output).toContain('.X.\n...\n');
   });
 });

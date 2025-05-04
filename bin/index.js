@@ -1,5 +1,5 @@
 import { createInputHandler } from '../src/input.js';
-import { createRenderer } from '../src/ui.js';
+import { createRenderer } from '../src/ui/index.js';
 import { GameEngine } from '../src/engine.js';
 import GameState from '../src/state.js';
 
