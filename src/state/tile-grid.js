@@ -1,7 +1,4 @@
-export const glyphs = {
-  background: ",'", // looks like grass
-  player: '<>', // looks like a player
-};
+import { glyphs } from '../ui/glyphs.js';
 
 /**
  * TileGrid is a face-local, mutable, persistent grid. This is is not

@@ -1,4 +1,5 @@
-import TileGrid, { glyphs } from './tile-grid.js';
+import TileGrid from './tile-grid.js';
+import { glyphs } from '../ui/glyphs.js';
 
 test('player appears in correct position', () => {
   const tileGrid = new TileGrid(3, 2);
