@@ -1,5 +1,5 @@
 import { renderFace, glyphs } from './buffer.js';
-import TileGrid from './tile-grid.js';
+import TileGrid from '../state/tile-grid.js';
 
 test('player appears in correct position', () => {
   const grid = new TileGrid(3, 2);

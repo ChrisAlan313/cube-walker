@@ -2,7 +2,7 @@
 import { jest } from '@jest/globals';
 import { Engine } from './engine.js';
 import Player from './player.js';
-import TileGrid from './ui/tile-grid.js';
+import TileGrid from './state/tile-grid.js';
 
 jest.useFakeTimers()
 

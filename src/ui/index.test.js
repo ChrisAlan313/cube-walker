@@ -1,6 +1,6 @@
 
 import { createRenderer } from './index.js';
-import TileGrid, { glyphs } from './tile-grid.js';
+import TileGrid, { glyphs } from '../state/tile-grid.js';
 
 class MockOut {
   constructor() {
