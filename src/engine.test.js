@@ -1,7 +1,7 @@
 // figure out why we need to import this
 import { jest } from '@jest/globals';
 import { Engine } from './engine.js';
-import Player from './player.js';
+import Player from './state/player.js';
 import TileGrid from './state/tile-grid.js';
 
 jest.useFakeTimers()
