@@ -3,16 +3,22 @@ export const glyphs = {
   player: '<>', // looks like a player
 };
 
-export function renderBuffer(gameState) {
-  const { canvasWidth: w, canvasHeight: h, playerPos: { x, y } } = gameState;
+/**
+ * ephemeral rendering overlay on top of the persistent tile grid
+ */
+export function renderFace(grid, player) {
   const buffer = [];
 
-  for (let row = h - 1; row >= 0; row--) {
-    const line = [];
-    for (let col = 0; col < w; col++) {
-      line.push(row === y && col === x ? glyphs.player : glyphs.background);
+  for (let y = grid.height - 1; y >= 0; y--) {
+    const row = [];
+    for (let x = 0; x < grid.width; x++) {
+      if (player.x === x && player.y === y) {
+        row.push(glyphs.player);
+      } else {
+        row.push(grid.get(x, y));
+      }
     }
-    buffer.push(line);
+    buffer.push(row);
   }
 
   return buffer;

@@ -1,4 +1,4 @@
-const CLEAR_SCREEN = '\x1Bc';
+const CLEAR_SCREEN = '\u001Bc';
 
 export function drawToTerminal(buffer, out, extra = '', options = {}) {
   const output = buffer.map(row => row.join('')).join('\n');

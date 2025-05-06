@@ -21,26 +21,10 @@ export default [
       unicorn,
     },
     rules: {
-      'unicorn/prefer-module': 'error',
-      'unicorn/no-array-reduce': 'warn',
-      'unicorn/explicit-length-check': 'error',
-      'unicorn/prefer-ternary': 'warn',
-      'unicorn/no-null': 'error',
-      'unicorn/filename-case': [
-        'error',
-        {
-          cases: {
-            camelCase: true,
-            pascalCase: true,
-          },
-        },
-      ],
-      'no-console': 'warn',
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'prefer-const': 'error',
-      eqeqeq: ['error', 'always'],
-      'no-var': 'error',
-      strict: ['error', 'global'],
+      ...unicorn.configs.recommended.rules,
+      // It says: Only use `process.exit()` in CLI apps. Throw an error instead
+      // I say:But this IS a CLI app!
+      'unicorn/no-process-exit': 'off',
     },
   },
   {

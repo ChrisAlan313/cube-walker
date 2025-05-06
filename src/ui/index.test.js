@@ -1,14 +1,14 @@
 
 import { createRenderer } from './index.js';
-import { glyphs } from './buffer.js';
+import TileGrid, { glyphs } from './tile-grid.js';
 
 class MockOut {
   constructor() {
     this.output = '';
   }
 
-  write(str) {
-    this.output += str;
+  write(string_) {
+    this.output += string_;
   }
 }
 
@@ -16,14 +16,10 @@ describe('UI Renderer', () => {
   it('draws correct output to stream', () => {
     const output = new MockOut();
     const render = createRenderer(output, { test: true });
+    const grid = new TileGrid(3, 2);
+    const player = { x: 1, y: 1 };
 
-    const mockState = {
-      canvasWidth: 3,
-      canvasHeight: 2,
-      playerPos: { x: 1, y: 1 }
-    };
-
-    render(mockState);
+    render(grid, player);
 
     const expected = [
       glyphs.background, glyphs.player, glyphs.background, '\n',
