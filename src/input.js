@@ -9,7 +9,6 @@ const keyMap = {
   s: 'DOWN',
   a: 'LEFT',
   d: 'RIGHT',
-  space: 'TOGGLE',
 };
 
 export function createInputHandler(onCommand) {

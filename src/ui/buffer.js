@@ -1,6 +1,6 @@
 export const glyphs = {
-  background: '.',
-  player: 'X',
+  background: ",'", // looks like grass
+  player: '<>', // looks like a player
 };
 
 export function renderBuffer(gameState) {

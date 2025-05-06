@@ -1,6 +1,6 @@
-// figure out why we need to import this
-import { jest } from '@jest/globals';
+
 import { createRenderer } from './index.js';
+import { glyphs } from './buffer.js';
 
 class MockOut {
   constructor() {
@@ -25,7 +25,10 @@ describe('UI Renderer', () => {
 
     render(mockState);
 
-    // const fullOutput = output.write.mock.calls.map(call => call[0]).join('');
-    expect(output.output).toContain('.X.\n...\n');
+    const expected = [
+      glyphs.background, glyphs.player, glyphs.background, '\n',
+      glyphs.background, glyphs.background, glyphs.background, '\n',
+    ].join('');
+    expect(output.output).toContain(expected);
   });
 });

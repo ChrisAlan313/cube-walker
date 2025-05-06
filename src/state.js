@@ -1,8 +1,8 @@
 class State {
-  constructor({playerPos = {x: 0, y: 0}, canvasWidth = 8, canvasHeight = 8}) {
+  constructor({ playerPos = { x: 0, y: 0 }, gameWidth = 8 }) {
     this.playerPos = playerPos;
-    this.canvasWidth = canvasWidth;
-    this.canvasHeight = canvasHeight;
+    this.canvasWidth = gameWidth;
+    this.canvasHeight = gameWidth;
     this.needsRender = true;
   }
 
