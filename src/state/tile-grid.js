@@ -1,4 +1,4 @@
-import { glyphs } from '../ui/glyphs.js';
+import { glyphs } from "../ui/glyphs.js";
 
 /**
  * TileGrid is a face-local, mutable, persistent grid. This is is not
@@ -10,7 +10,7 @@ class TileGrid {
     this.width = width;
     this.height = height;
     this.cells = Array.from({ length: height }, () =>
-      Array.from({ length: width }, () => glyphs.background)
+      Array.from({ length: width }, () => glyphs.background),
     );
   }
 

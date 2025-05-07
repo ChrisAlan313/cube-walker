@@ -19,25 +19,25 @@ export class Engine {
 
   handleInput(command) {
     switch (command) {
-    case 'UP': {
-      this.player.moveUp();
-      break;
-    }
-    case 'DOWN': {
-      this.player.moveDown();
-      break;
-    }
-    case 'LEFT': {
-      this.player.moveLeft();
-      break;
-    }
-    case 'RIGHT': {
-      this.player.moveRight();
-      break;
-    }
-    case 'TOGGLE': {
-      break; // could add other toggles later
-    }
+      case "UP": {
+        this.player.moveUp();
+        break;
+      }
+      case "DOWN": {
+        this.player.moveDown();
+        break;
+      }
+      case "LEFT": {
+        this.player.moveLeft();
+        break;
+      }
+      case "RIGHT": {
+        this.player.moveRight();
+        break;
+      }
+      case "TOGGLE": {
+        break; // could add other toggles later
+      }
     }
     this.dirty = true;
   }

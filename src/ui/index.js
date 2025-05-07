@@ -1,5 +1,5 @@
-import { renderFace } from './buffer.js';
-import { drawToTerminal } from './terminal.js';
+import { renderFace } from "./buffer.js";
+import { drawToTerminal } from "./terminal.js";
 
 export function createRenderer(out, options = {}) {
   return function render(grid, player) {

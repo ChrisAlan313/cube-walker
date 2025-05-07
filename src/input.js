@@ -1,14 +1,14 @@
-import readline from 'node:readline';
+import readline from "node:readline";
 
 const keyMap = {
-  up:    'UP',
-  down:  'DOWN',
-  left:  'LEFT',
-  right: 'RIGHT',
-  w: 'UP',
-  s: 'DOWN',
-  a: 'LEFT',
-  d: 'RIGHT',
+  up: "UP",
+  down: "DOWN",
+  left: "LEFT",
+  right: "RIGHT",
+  w: "UP",
+  s: "DOWN",
+  a: "LEFT",
+  d: "RIGHT",
 };
 
 export function createInputHandler(onCommand) {
@@ -16,8 +16,8 @@ export function createInputHandler(onCommand) {
   process.stdin.setRawMode(true);
   process.stdin.resume();
 
-  process.stdin.on('keypress', (_, key) => {
-    if (key.ctrl && key.name === 'c') {
+  process.stdin.on("keypress", (_, key) => {
+    if (key.ctrl && key.name === "c") {
       process.exit();
     }
 

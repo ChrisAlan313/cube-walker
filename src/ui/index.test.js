@@ -1,11 +1,10 @@
-
-import { createRenderer } from './index.js';
-import TileGrid from '../state/tile-grid.js';
-import { glyphs } from './glyphs.js';
+import { createRenderer } from "./index.js";
+import TileGrid from "../state/tile-grid.js";
+import { glyphs } from "./glyphs.js";
 
 class MockOut {
   constructor() {
-    this.output = '';
+    this.output = "";
   }
 
   write(string_) {
@@ -13,8 +12,8 @@ class MockOut {
   }
 }
 
-describe('UI Renderer', () => {
-  it('draws correct output to stream', () => {
+describe("UI Renderer", () => {
+  it("draws correct output to stream", () => {
     const output = new MockOut();
     const render = createRenderer(output, { test: true });
     const grid = new TileGrid(3, 2);
@@ -23,9 +22,15 @@ describe('UI Renderer', () => {
     render(grid, player);
 
     const expected = [
-      glyphs.background, glyphs.player, glyphs.background, '\n',
-      glyphs.background, glyphs.background, glyphs.background, '\n',
-    ].join('');
+      glyphs.background,
+      glyphs.player,
+      glyphs.background,
+      "\n",
+      glyphs.background,
+      glyphs.background,
+      glyphs.background,
+      "\n",
+    ].join("");
     expect(output.output).toContain(expected);
   });
 });
