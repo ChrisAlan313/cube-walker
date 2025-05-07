@@ -76,12 +76,12 @@ export const ROTATIONS = Object.freeze(Object.values(ROTATION));
 class CubeWorld {
   constructor() {
     this.faceMap = {
-      '-x': new TileGrid(10, 10), // LEFT side of cube
-      '+x': new TileGrid(10, 10), // RIGHT side of cube
-      '-y': new TileGrid(10, 10), // BOTTOM of cube
-      '+y': new TileGrid(10, 10), // TOP of cube
-      '-z': new TileGrid(10, 10), // face towards viewer
-      '+z': new TileGrid(10, 10), // face away from viewer
+      [FACE.NX]: new TileGrid(10, 10), // LEFT side of cube
+      [FACE.PX]: new TileGrid(10, 10), // RIGHT side of cube
+      [FACE.NY]: new TileGrid(10, 10), // BOTTOM of cube
+      [FACE.PY]: new TileGrid(10, 10), // TOP of cube
+      [FACE.NZ]: new TileGrid(10, 10), // face towards viewer
+      [FACE.PZ]: new TileGrid(10, 10), // face away from viewer
     }
     /**
      * "TOP" will be oriented towards the +z face IF the face is not a z face.
@@ -90,40 +90,40 @@ class CubeWorld {
      */
     this.edgeMap = {
       [FACE.NX]: {
-        'TOP': { face: '+z', edge: 'RIGHT', rotation: 0 },
-        'RIGHT': { face: '+y', edge: 'LEFT', rotation: 90 },
-        'BOTTOM': { face: '-z', edge: 'LEFT', rotation: 180 },
-        'LEFT': { face: '-y', edge: 'RIGHT', rotation: 270 },
+        [DIRECTION.TOP]: { face: FACE.PZ, edge: DIRECTION.RIGHT, rotation: ROTATION.R0 },
+        [DIRECTION.RIGHT]: { face: FACE.PY, edge: DIRECTION.LEFT, rotation: ROTATION.R90 },
+        [DIRECTION.BOTTOM]: { face: FACE.NZ, edge: DIRECTION.LEFT, rotation: ROTATION.R180 },
+        [DIRECTION.LEFT]: { face: FACE.NY, edge: DIRECTION.RIGHT, rotation: ROTATION.R270 },
       },
       [FACE.PX]: {
-        'TOP': { face: '+z', edge: 'LEFT', rotation: 0 },
-        'RIGHT': { face: '-y', edge: 'LEFT', rotation: 90 },
-        'BOTTOM': { face: '-z', edge: 'RIGHT', rotation: 180 },
-        'LEFT': { face: '+y', edge: 'RIGHT', rotation: 270 },
+        [DIRECTION.TOP]: { face: FACE.PZ, edge: DIRECTION.LEFT, rotation: ROTATION.R0 },
+        [DIRECTION.RIGHT]: { face: FACE.NY, edge: DIRECTION.LEFT, rotation: ROTATION.R90 },
+        [DIRECTION.BOTTOM]: { face: FACE.NZ, edge: DIRECTION.RIGHT, rotation: ROTATION.R180 },
+        [DIRECTION.LEFT]: { face: FACE.PY, edge: DIRECTION.RIGHT, rotation: ROTATION.R270 },
       },
       [FACE.NY]: {
-        'TOP': { face: '+z', edge: 'BOTTOM', rotation: 0 },
-        'RIGHT': { face: '-x', edge: 'LEFT', rotation: 90 },
-        'BOTTOM': { face: '-z', edge: 'BOTTOM', rotation: 180 },
-        'LEFT': { face: '+x', edge: 'RIGHT', rotation: 270 },
+        [DIRECTION.TOP]: { face: FACE.PZ, edge: DIRECTION.BOTTOM, rotation: ROTATION.R0 },
+        [DIRECTION.RIGHT]: { face: FACE.NX, edge: DIRECTION.LEFT, rotation: ROTATION.R90 },
+        [DIRECTION.BOTTOM]: { face: FACE.NZ, edge: DIRECTION.BOTTOM, rotation: ROTATION.R180 },
+        [DIRECTION.LEFT]: { face: FACE.PX, edge: DIRECTION.RIGHT, rotation: ROTATION.R270 },
       },
       [FACE.PY]: {
-        'TOP': { face: '+z', edge: 'TOP', rotation: 0 },
-        'RIGHT': { face: '+x', edge: 'LEFT', rotation: 90 },
-        'BOTTOM': { face: '-z', edge: 'TOP', rotation: 180 },
-        'LEFT': { face: '-x', edge: 'RIGHT', rotation: 270 },
+        [DIRECTION.TOP]: { face: FACE.PZ, edge: DIRECTION.TOP, rotation: ROTATION.R0 },
+        [DIRECTION.RIGHT]: { face: FACE.PX, edge: DIRECTION.LEFT, rotation: ROTATION.R90 },
+        [DIRECTION.BOTTOM]: { face: FACE.NZ, edge: DIRECTION.TOP, rotation: ROTATION.R180 },
+        [DIRECTION.LEFT]: { face: FACE.NX, edge: DIRECTION.RIGHT, rotation: ROTATION.R270 },
       },
       [FACE.NZ]: {
-        'TOP': { face: '+y', edge: 'BOTTOM', rotation: 0 },
-        'RIGHT': { face: '+x', edge: 'BOTTOM', rotation: 90 },
-        'BOTTOM': { face: '-y', edge: 'BOTTOM', rotation: 180 },
-        'LEFT': { face: '-x', edge: 'BOTTOM', rotation: 270 },
+        [DIRECTION.TOP]: { face: FACE.PY, edge: DIRECTION.BOTTOM, rotation: ROTATION.R0 },
+        [DIRECTION.RIGHT]: { face: FACE.PX, edge: DIRECTION.BOTTOM, rotation: ROTATION.R90 },
+        [DIRECTION.BOTTOM]: { face: FACE.NY, edge: DIRECTION.BOTTOM, rotation: ROTATION.R180 },
+        [DIRECTION.LEFT]: { face: FACE.NX, edge: DIRECTION.BOTTOM, rotation: ROTATION.R270 },
       },
       [FACE.PZ]: {
-        'TOP': { face: '+y', edge: 'TOP', rotation: 0 },
-        'RIGHT': { face: '-x', edge: 'TOP', rotation: 90 },
-        'BOTTOM': { face: '-y', edge: 'TOP', rotation: 180 },
-        'LEFT': { face: '+x', edge: 'TOP', rotation: 270 },
+        [DIRECTION.TOP]: { face: FACE.PY, edge: DIRECTION.TOP, rotation: ROTATION.R0 },
+        [DIRECTION.RIGHT]: { face: FACE.NX, edge: DIRECTION.TOP, rotation: ROTATION.R90 },
+        [DIRECTION.BOTTOM]: { face: FACE.NY, edge: DIRECTION.TOP, rotation: ROTATION.R180 },
+        [DIRECTION.LEFT]: { face: FACE.PX, edge: DIRECTION.TOP, rotation: ROTATION.R270 },
       },
     }
   }
