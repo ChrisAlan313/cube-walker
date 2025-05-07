@@ -1,7 +1,7 @@
 {
-  "name": "cli-game",
-  "version": "1.0.0",
-  "description": "Draw train tracks, train drives on tracks",
+  "name": "cube-world",
+  "version": "0.0.0",
+  "description": "A cube world scaffold",
   "main": "bin/index.js",
   "type": "module",
   "scripts": {
