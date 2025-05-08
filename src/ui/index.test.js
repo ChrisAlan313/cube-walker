@@ -1,6 +1,6 @@
 import { createRenderer } from "./index.js";
 import TileGrid from "../state/tile-grid.js";
-import { glyphs } from "./glyphs.js";
+import { GLYPHS } from "../constants.js";
 
 class MockOut {
   constructor() {
@@ -22,13 +22,13 @@ describe("UI Renderer", () => {
     render(grid, player);
 
     const expected = [
-      glyphs.background,
-      glyphs.player,
-      glyphs.background,
+      GLYPHS.background,
+      GLYPHS.player,
+      GLYPHS.background,
       "\n",
-      glyphs.background,
-      glyphs.background,
-      glyphs.background,
+      GLYPHS.background,
+      GLYPHS.background,
+      GLYPHS.background,
       "\n",
     ].join("");
     expect(output.output).toContain(expected);

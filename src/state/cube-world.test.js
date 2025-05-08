@@ -1,4 +1,5 @@
-import CubeWorld, { DIRECTION, FACE } from "./cube-world";
+import CubeWorld from "./cube-world";
+import { DIRECTION, FACE } from "../constants";
 
 // helper function to update running rotation
 function updateRunningRotation(runningRotation, rotation) {
