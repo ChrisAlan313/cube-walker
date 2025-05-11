@@ -1,4 +1,4 @@
-import { GLYPHS, ROTATION } from "../constants";
+import { GLYPHS, ROTATION } from "../constants.js";
 
 /**
  * ephemeral rendering overlay on top of the persistent tile grid
