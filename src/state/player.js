@@ -1,7 +1,8 @@
 class Player {
-  constructor(x, y) {
+  constructor(x, y, face) {
     this.x = x;
     this.y = y;
+    this.face = face;
   }
 
   moveUp() {

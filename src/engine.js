@@ -1,18 +1,28 @@
+import { ROTATION } from "./constants.js";
+
 /**
  * glues everything, owns the game loop or render scheduling
  */
 export class Engine {
-  constructor(grid, player, renderFunction) {
-    this.grid = grid;
+  constructor(cubeWorld, currentFace, player, renderFunction) {
+    this.cubeWorld = cubeWorld;
+    this.currentFace = currentFace;
     this.player = player;
     this.render = renderFunction;
     this.dirty = true;
+    this.rotation = ROTATION.R0;
+  }
+
+  rotate(rotation) {
+    this.rotation = (this.rotation + rotation) % 360;
   }
 
   start() {
     setInterval(() => {
       if (!this.dirty) return;
-      this.render(this.grid, this.player);
+      const currentFaceGrid = this.cubeWorld.faceMap[this.currentFace];
+      const currentFaceRotation = this.rotation;
+      this.render(currentFaceGrid, this.player, currentFaceRotation);
       this.dirty = false;
     }, 1000 / 30);
   }

@@ -15,7 +15,11 @@ class TileGrid {
   }
 
   get(x, y) {
-    return this.cells[y][x];
+    const cell = this.cells[y][x];
+    if (cell === undefined) {
+      throw new Error(`cell ${x}, ${y} is out of bounds`);
+    }
+    return cell;
   }
 
   set(x, y, value) {

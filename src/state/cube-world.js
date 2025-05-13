@@ -49,14 +49,15 @@ import { FACE, DIRECTION, ROTATION } from "../constants.js";
  * - Y is yellow
  */
 class CubeWorld {
-  constructor() {
+  constructor(width) {
+    const height = width; // its square
     this.faceMap = {
-      [FACE.NX]: new TileGrid(10, 10), // LEFT side of cube
-      [FACE.PX]: new TileGrid(10, 10), // RIGHT side of cube
-      [FACE.NY]: new TileGrid(10, 10), // BOTTOM of cube
-      [FACE.PY]: new TileGrid(10, 10), // TOP of cube
-      [FACE.NZ]: new TileGrid(10, 10), // face towards viewer
-      [FACE.PZ]: new TileGrid(10, 10), // face away from viewer
+      [FACE.NX]: new TileGrid(width, height), // LEFT side of cube
+      [FACE.PX]: new TileGrid(width, height), // RIGHT side of cube
+      [FACE.NY]: new TileGrid(width, height), // BOTTOM of cube
+      [FACE.PY]: new TileGrid(width, height), // TOP of cube
+      [FACE.NZ]: new TileGrid(width, height), // face towards viewer
+      [FACE.PZ]: new TileGrid(width, height), // face away from viewer
     };
     /**
      * "TOP" will be oriented towards the +z face IF the face is not a z face.
